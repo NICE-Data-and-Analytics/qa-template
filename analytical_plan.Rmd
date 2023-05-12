@@ -1,0 +1,145 @@
+---
+title: "QA template"
+author: "NICE"
+date: "`r Sys.Date()`"
+output: 
+    html_document:
+        toc: true
+        toc_float: 
+        collapsed: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Tips for use
+
+Check decisions with requestor or other analysts throughout.
+
+Update the document as you go along with the analysis. Document when decisions, definitions and assumptions change and why. Use git to ensure there is an audit trail.
+
+# Analysis question
+
+## Relevant guidance
+
+Link to guidance.
+
+Paste relevant recommendations for reference.
+
+## Time period
+
+## Target population
+
+## Rationale
+
+Why is this question being asked?
+
+Why is this being measured?
+
+## Use
+
+How will the data be used?
+
+Who will use the data? e.g. committee
+
+What is the risk level of this project? (Determines QA needs. If data is being used to inform NICE guidance, this is at least a medium-high business risk and would require QA.)
+
+# Data source
+
+Relevant data items:
+
+Population covered:
+
+Time period covered:
+
+# Background metrics
+
+You may want to define some background metrics to understand the desired metrics.
+
+Sample size: e.g. number of women in HES APC with a breast cancer diagnosis code in 2018-19
+
+e.g. if looking at what proportion of people with CKD have an eGFR less than 15, you may first want to know what proportion of people with CKD have had an eGFR measurement in the last year.
+
+# Metric 1
+
+## Numerator
+
+Time period:
+
+Case definition:
+
+## Denominator
+
+Cohort:
+
+Time period:
+
+Inclusion and exclusion criteria:
+
+# Metric 2
+
+# Code lists
+
+# Data cleaning and checks
+
+## Missing data
+
+Assess missingness of each variable.
+
+## Distribution of each variable
+
+Check the distribution of each variable.
+
+For continuous variables:  
+- Look at the summary stats: min, Q1, mean, median, Q3, max.
+- Plot in a histogram.
+
+Are the values as expected for this population?
+
+Use tables for categorical variables, showing number and proportion. Can plot as histogram if desired.
+
+## Improbable values or groups
+
+For measurements, e.g. eGFR, cholesterol or blood pressure, may need to filter out negative values as you would never get a negative reading. May also want to consult with requestor or clinician and set an upper threshold, above which is not humanly possible to have such a value.
+
+## Converting units
+
+For measurements, what is the standard unit used? What other units are used and how do you convert to standard units?
+
+## Consistent columns
+
+If joining two tables and same data item in each table (e.g. year of birth), are these consistent?
+
+# Analysis method
+
+Descriptive? Summarise central tendency (mean, median, mode) and spread (quantiles, range, min, max)
+
+# Expected output
+
+Format, e.g. report, dashboard, spreadsheet  
+Graphs, maps, infographics
+
+# Compare with existing data
+
+Any audit or study data to compare your results with?
+
+# QA plan
+
+## Version control
+
+GitHub repo link
+
+## Code verification and validation
+
+Validation checks whether the right model has been built (ie. does this analytical approach answer the question?). Verification checks if the model has been built right (ie. does the code work as intended?).
+
+# Limitations
+
+Key assumptions
+
+Factors influencing uncertainty
+
+Possible implications
+
+Population not captured
