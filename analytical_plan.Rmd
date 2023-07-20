@@ -1,11 +1,11 @@
 ---
-title: "QA template"
+title: "Data analysis plan"
 author: "NICE"
 date: "`r Sys.Date()`"
 output: 
     html_document:
         toc: true
-        toc_float: 
+        toc_float: true
         collapsed: false
 ---
 
@@ -19,31 +19,65 @@ Check decisions with requestor or other analysts throughout.
 
 Update the document as you go along with the analysis. Document when decisions, definitions and assumptions change and why. Use git to ensure there is an audit trail.
 
-# Analysis question
 
-## Relevant guidance
+# Who
+
+## Project sponsor
+
+Who is requesting this data?
+
+## Users/audience
+
+Who will be using the output?
+
+## Other stakeholders
+
+Any other stakeholders who have an interest in the project and what influence they have.
+
+
+# Project brief 
+
+## Why: Analysis question
+
+What question do we need to answer?
+
+### Relevant guidance
 
 Link to guidance.
 
 Paste relevant recommendations for reference.
 
-## Time period
+### Time period
 
-## Target population
+What time period is of interest?
 
-## Rationale
+Any influential dates/periods which should be noted? (e.g. date guidance published, COVID-19)
+
+### Target population
+
+What population will this data be applied to?
+
+### Rationale
 
 Why is this question being asked?
 
-Why is this being measured?
+What is the business need?
 
-## Use
+### Context
+
+### Use
 
 How will the data be used?
 
 Who will use the data? e.g. committee
 
 What is the risk level of this project? (Determines QA needs. If data is being used to inform NICE guidance, this is at least a medium-high business risk and would require QA.)
+
+
+# When
+
+Timelines, deadlines, milestones
+
 
 # Data source
 
@@ -52,6 +86,41 @@ Relevant data items:
 Population covered:
 
 Time period covered:
+
+## Restrictions around data usage
+
+### Data usage
+
+Where will the data be stored?
+
+What is the retention period? 
+
+### Publishing
+
+Is the data going to be published by NICE?
+
+What needs to done if this data is included in a published document?
+
+e.g. required text citing the data source (SDE and CPRD), sending the publication to the data owner (CPRD), referencing approved protocol number (CPRD)
+
+### Known issues
+
+Known issues which will affect query.
+
+# Approvals and authorizations
+
+## Data owner
+
+Does a research application need to be submitted to the data owner?
+
+Status:
+
+Protocol number:
+
+## NICE internal processes
+
+Does an internal research application need to be submitted?
+
 
 # Background metrics
 
@@ -67,7 +136,7 @@ e.g. if looking at what proportion of people with CKD have an eGFR less than 15,
 
 Time period:
 
-Case definition:
+Case definition: Reference code lists
 
 ## Denominator
 
@@ -75,17 +144,34 @@ Cohort:
 
 Time period:
 
-Inclusion and exclusion criteria:
+Inclusion and exclusion criteria: Reference code lists
+
+## Subgroup analyses
+
+What subgroup analyses will be done for this metric? e.g. deprivation, age groups, gender, ethnicity?
+
+What categories will be used for these factors?
+
 
 # Metric 2
 
+Copy headings for Metric 1
+
+
 # Code lists
+
 
 # Data cleaning and checks
 
-## Missing data
+## Completeness: Missing data
 
 Assess missingness of each variable.
+
+Remove empty columns.
+
+## Uniqueness
+
+Remove duplicate rows.
 
 ## Distribution of each variable
 
@@ -99,21 +185,31 @@ Are the values as expected for this population?
 
 Use tables for categorical variables, showing number and proportion. Can plot as histogram if desired.
 
-## Improbable values or groups
+## Accuracy: Improbable values or groups
 
 For measurements, e.g. eGFR, cholesterol or blood pressure, may need to filter out negative values as you would never get a negative reading. May also want to consult with requestor or clinician and set an upper threshold, above which is not humanly possible to have such a value.
 
-## Converting units
+## Consistency
+
+### Data types
+
+### Categories 
+
+### Converting units
 
 For measurements, what is the standard unit used? What other units are used and how do you convert to standard units?
 
-## Consistent columns
+### Consistent columns across data tables
 
 If joining two tables and same data item in each table (e.g. year of birth), are these consistent?
 
 # Analysis method
 
 Descriptive? Summarise central tendency (mean, median, mode) and spread (quantiles, range, min, max)
+
+## Statistical disclosure control
+
+What steps will be taken to minimise disclosure risks?
 
 # Expected output
 
