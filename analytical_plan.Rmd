@@ -26,13 +26,27 @@ Update the document as you go along with the analysis. Document when decisions, 
 
 Who is requesting this data?
 
-## Users/audience
+## Users/audience/stakeholders
 
-Who will be using the output?
+(You may want to answer these questions for each stakeholder separately.)
 
-## Other stakeholders
+Who will be using the output? 
 
-Any other stakeholders who have an interest in the project and what influence they have.
+What information do they want?
+
+What kind of output do they want?
+
+What will they be using it for? 
+
+Why do they want it?
+
+Will you be directly communicating with them? How will you communicate with them?
+
+When will they be involved?
+
+What information, data, knowledge etc do you require from them? Are they responsible for any dependencies?
+
+What influence do they have on the project?
 
 
 # Project brief 
@@ -40,6 +54,8 @@ Any other stakeholders who have an interest in the project and what influence th
 ## Why: Analysis question
 
 What question do we need to answer?
+
+What are your hypotheses (if relevant)?
 
 ### Relevant guidance
 
@@ -51,11 +67,9 @@ Paste relevant recommendations for reference.
 
 What time period is of interest?
 
-Any influential dates/periods which should be noted? (e.g. date guidance published, COVID-19)
-
 ### Target population
 
-What population will this data be applied to?
+What population will this data be applied to? (geography, age, condition, gender. This is for the overarching research question. Further populations will be defined per metric.)
 
 ### Rationale
 
@@ -65,31 +79,122 @@ What is the business need?
 
 ### Context
 
+Any notable dates or time periods which might affect the measures? (e.g. COVID-19 pandemic, guidance introduced, drug introduced)
+
+Any background data you should be aware of?
+
+Any known variation/inequalities?
+
+Any existing data? (Add to [Validation])
+
+### Necessity
+
+Does the answer already exist? 
+
+Is there an easier way to answer this question?
+
+Is this the right line of questioning?
+
 ### Use
-
-How will the data be used?
-
-Who will use the data? e.g. committee
 
 What is the risk level of this project? (Determines QA needs. If data is being used to inform NICE guidance, this is at least a medium-high business risk and would require QA.)
 
+# What: Expected output
+
+What metrics?
+
+What needs to be included in the output? Graphs, maps, infographics, tables, summary, interpretation
+
+In what format? (e.g. report, dashboard, spreadsheet)  
+
+
+## Updates
+
+Is this a one-off analysis or will the data be updated and the analysis repeated? 
+
+If it is to be repeated, will this be regularly and at what intervals? Until when?
+
+How will the update be performed - scheduling scripts or manual update?
+
+Will the update only extract the newest data or all the data? If the latter, how will previous extracts be handled?
 
 # When
 
-Timelines, deadlines, milestones
+What is the deadline for this work?
+
+How flexible is the deadline?
+
+Set milestones if needed.
 
 
 # Data source
 
+(Repeat if multiple data sources will be linked.)
+
+How was this data collected: 
+
+Why was this data collected (e.g. administrative, research):
+
 Relevant data items:
 
-Population covered:
+## Population
 
-Time period covered:
+Population represented in the data source:
+
+## Time 
+
+Time period covered: Is this uniform? (e.g. will all GPs have provided data up to 31 March 2022?)
+
+Timeliness:
 
 ## Restrictions around data usage
 
-### Data usage
+### Privacy
+
+Will any personal data be extracted?
+
+Keep in mind GDPR regulations. Note down how privacy by design will be incorporated and you will comply with GDPR.
+
+#### Notes on GDPR 
+
+From the [ICO](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/).
+
+Identifiers include:
+- name;
+- identification number;
+- location data; and
+- an online identifier (e.g. IP addresses and cookie identifiers).
+ 
+A combination of identifiers may be needed to identify an individual.
+
+Individuals may be directly identifiable using the identifiers you have or indirectly identifiable with additional information.
+
+Special category data is more sensitive and requires more protection. This includes personal data about an individual's: 
+- race  
+- ethnic origin  
+- political opinions  
+- religious or philosophical beliefs  
+- trade union membership  
+- genetic data  
+- biometric data (where this is used for identification purposes)  
+- health data  
+- sex life  
+- sexual orientation
+
+Also note criminal conviction and offences data.
+
+Pseudonymised data is still personal data. Pseudonymisation is defined in UK GDPR as "“…the processing of personal data in such a manner that the personal data can no longer be attributed to a specific data subject without the use of additional information, provided that such additional information is kept separately and is subject to technical and organisational measures to ensure that the personal data are not attributed to an identified or identifiable natural person.”
+
+The [seven key principles to processing personal data](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles/a-guide-to-the-data-protection-principles/) in the UK GDPR are:
+- Lawfulness, fairness and transparency
+- Purpose limitation
+- Data minimisation
+- Accuracy
+- Storage limitation
+- Integrity and confidentiality (security)
+- Accountability
+
+### Data storage and retention
 
 Where will the data be stored?
 
@@ -132,6 +237,12 @@ e.g. if looking at what proportion of people with CKD have an eGFR less than 15,
 
 # Metric 1
 
+## Question
+
+Research question:
+
+Target population (who will the findings be generalised to):
+
 ## Numerator
 
 Time period:
@@ -152,6 +263,11 @@ What subgroup analyses will be done for this metric? e.g. deprivation, age group
 
 What categories will be used for these factors?
 
+## Considerations
+
+How representative is the population captured in this metric of the target population?
+
+Who is missing?
 
 # Metric 2
 
@@ -161,64 +277,99 @@ Copy headings for Metric 1
 # Code lists
 
 
-# Data cleaning and checks
+# Data preparation
 
 ## Completeness: Missing data
 
 Assess missingness of each variable.
 
-Remove empty columns.
+Remove empty columns and rows.
 
 ## Uniqueness
 
 Remove duplicate rows.
+
+## Label factor levels
+
+Label factor levels, if codes, numbers or abbreviations are used for levels within a factor.
+
+Rename factor levels if required.
+
+## Accuracy: Improbable values or groups
+
+For measurements, e.g. eGFR, cholesterol or blood pressure, may need to filter out negative values as you would never get a negative reading. May also want to consult with requestor or clinician and set an upper threshold, above which is not humanly possible to have such a value.
+
+### Data types
+
+Check data types are expected.
+
+For long numeric IDs, read in as string as Excel, R and other programmes are often not compatible with large integers.
+
+Check dates are formatted in correct order.
+
+### Categorisation
+
+Do some continuous variables require categorising? (e.g. age to age groups)
+
+Do new categories need to be made? (e.g. categorising ICBs into regions)
+
+Do some categories require collapsing?
+
+### Converting units
+
+For measurements, what is the standard unit used? What other units are used and how do you convert to standard units?
+
+### Consistency
+
+Do values within a column have a consistent structure? (e.g. dates)
+
+If joining two tables and same data item in each table (e.g. year of birth), what columns will you join on. Are these consistent?
+
+### Timelineess
+
+Check if the data covers the period desired.
+
+Drop values outside of this period.
 
 ## Distribution of each variable
 
 Check the distribution of each variable.
 
 For continuous variables:  
-- Look at the summary stats: min, Q1, mean, median, Q3, max.
+- Look at the summary stats for central tendency and spread: min, Q1, mean, median, Q3, max.
 - Plot in a histogram.
 
 Are the values as expected for this population?
 
 Use tables for categorical variables, showing number and proportion. Can plot as histogram if desired.
 
-## Accuracy: Improbable values or groups
+## Data linkage
 
-For measurements, e.g. eGFR, cholesterol or blood pressure, may need to filter out negative values as you would never get a negative reading. May also want to consult with requestor or clinician and set an upper threshold, above which is not humanly possible to have such a value.
-
-## Consistency
-
-### Data types
-
-### Categories 
-
-### Converting units
-
-For measurements, what is the standard unit used? What other units are used and how do you convert to standard units?
-
-### Consistent columns across data tables
-
-If joining two tables and same data item in each table (e.g. year of birth), are these consistent?
+If multiple data sources to be linked, what will it be linked on?
 
 # Analysis method
 
-Descriptive? Summarise central tendency (mean, median, mode) and spread (quantiles, range, min, max)
+## Descriptive statistics
 
 ## Statistical disclosure control
 
-What steps will be taken to minimise disclosure risks?
+What steps will be taken to minimise disclosure risks? (e.g. rounding, suppression)
 
-# Expected output
+# Findings
 
-Format, e.g. report, dashboard, spreadsheet  
-Graphs, maps, infographics
+- What patterns do you spot?  
+- What is the direction of the difference/trend? (e.g. higher in males than females)
+- What is the magnitude of the difference - absolute difference vs relative difference?  
+- Any time trends?  
+- Any geographical trends?  
+- Does the pattern in variation between certain subgroups hold true across multiple measures?
 
-# Compare with existing data
+# Validation
 
-Any audit or study data to compare your results with?
+- Are the values within the right ballpark?
+- Are the findings expected?
+- Are they consistent with other data? (e.g. audit findings)
+- Are the values/patterns of clinical significance? (e.g. does a 5% absolute difference in uptake between men and women warrant concern?)
 
 # QA plan
 
